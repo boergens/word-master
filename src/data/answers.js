@@ -109,7 +109,6 @@ const answers = [
   'aroma',
   'arose',
   'array',
-  'arris',
   'arrow',
   'arson',
   'artsy',
