@@ -1,16 +1,15 @@
-import { useEffect, useState} from 'react'
 import { letters, status } from './constants'
-import { Keyboard } from './components/Keyboard'
-import answers from './data/answers'
-import words from './data/words'
+import { useEffect, useState } from 'react'
 
-import { useLocalStorage } from './hooks/useLocalStorage'
-import { ReactComponent as Info } from './data/Info.svg'
-import { ReactComponent as Settings } from './data/Settings.svg'
-
-import { InfoModal } from './components/InfoModal'
-import { SettingsModal } from './components/SettingsModal'
 import { EndGameModal } from './components/EndGameModal'
+import { ReactComponent as Info } from './data/Info.svg'
+import { InfoModal } from './components/InfoModal'
+import { Keyboard } from './components/Keyboard'
+import { ReactComponent as Settings } from './data/Settings.svg'
+import { SettingsModal } from './components/SettingsModal'
+import answers from './data/answers'
+import { useLocalStorage } from './hooks/useLocalStorage'
+import words from './data/words'
 
 const state = {
   playing: 'playing',
@@ -297,22 +296,39 @@ function App() {
             <Info />
           </button>
         </header>
-        <div className="flex items-center flex-col py-3">
-          <div className="grid grid-cols-5 grid-flow-row gap-4">
-            {board.map((row, rowNumber) =>
-              row.map((letter, colNumber) => (
-                <span
-                  key={colNumber}
-                  className={`${getCellStyles(
-                    rowNumber,
-                    colNumber,
-                    letter
-                  )} inline-flex items-center font-medium justify-center text-lg w-[14vw] h-[14vw] xs:w-14 xs:h-14 sm:w-20 sm:h-20 rounded-full`}
+        <div className="flex items-center flex-col py-3 flex-1 justify-center relative">
+          <div className="relative">
+            <div className="grid grid-cols-5 grid-flow-row gap-4">
+              {board.map((row, rowNumber) =>
+                row.map((letter, colNumber) => (
+                  <span
+                    key={colNumber}
+                    className={`${getCellStyles(
+                      rowNumber,
+                      colNumber,
+                      letter
+                    )} inline-flex items-center font-medium justify-center text-lg w-[13vw] h-[13vw] xs:w-14 xs:h-14 sm:w-20 sm:h-20 rounded-full`}
+                  >
+                    {letter}
+                  </span>
+                ))
+              )}
+            </div>
+            <div
+              className={`absolute -bottom-24 left-1/2 transform -translate-x-1/2 ${
+                gameState === state.playing ? 'hidden' : ''
+              }`}
+            >
+              <div className={darkMode ? 'dark' : ''}>
+                <button
+                  type="button"
+                  className="rounded-lg z-10 px-6 py-2 text-lg nm-flat-background dark:nm-flat-background-dark hover:nm-inset-background dark:hover:nm-inset-background-dark text-primary dark:text-primary-dark"
+                  onClick={playAgain}
                 >
-                  {letter}
-                </span>
-              ))
-            )}
+                  Play Again
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <InfoModal
@@ -340,7 +356,7 @@ function App() {
           darkMode={darkMode}
           toggleDarkMode={toggleDarkMode}
         />
-        {gameState === state.playing ? (
+        <div className={`h-auto relative ${gameState === state.playing ? '' : 'invisible'}`}>
           <Keyboard
             letterStatuses={letterStatuses}
             addLetter={addLetter}
@@ -348,19 +364,7 @@ function App() {
             onDeletePress={onDeletePress}
             gameDisabled={gameState !== state.playing}
           />
-        ) : (
-          <div className="flex-1 flex pt-8 items-start justify-center">
-            <div className={darkMode ? 'dark' : ''}>
-              <button
-                type="button"
-                className="rounded-lg z-10 px-6 py-2 text-lg nm-flat-background dark:nm-flat-background-dark hover:nm-inset-background dark:hover:nm-inset-background-dark text-primary dark:text-primary-dark"
-                onClick={playAgain}
-              >
-                Play Again
-              </button>
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </div>
   )
