@@ -5753,7 +5753,6 @@ const words = {
   pareu: true,
   parge: true,
   pargo: true,
-  paris: true,
   parka: true,
   parks: true,
   parky: true,
