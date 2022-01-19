@@ -26,7 +26,6 @@ const answers = [
   'added',
   'adder',
   'adept',
-  'adieu',
   'admin',
   'admit',
   'adobe',
@@ -92,7 +91,6 @@ const answers = [
   'amine',
   'amino',
   'amiss',
-  'amity',
   'among',
   'ample',
   'amply',
@@ -684,7 +682,6 @@ const answers = [
   'email',
   'embed',
   'ember',
-  'emery',
   'emirs',
   'emits',
   'empty',
@@ -784,7 +781,6 @@ const answers = [
   'first',
   'fishy',
   'fists',
-  'fitly',
   'fizzy',
   'fjord',
   'flail',
@@ -1351,7 +1347,6 @@ const answers = [
   'naive',
   'named',
   'nanny',
-  'nappy',
   'nasal',
   'natal',
   'naval',
@@ -2369,7 +2364,7 @@ const answers = [
   'zebra',
   'zeros',
   'zonal',
-  'zooms',,
+  'zooms',
 ]
 
 export default answers
