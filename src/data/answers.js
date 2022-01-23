@@ -919,7 +919,6 @@ const answers = [
   'going',
   'golem',
   'gonad',
-  'goody',
   'gooey',
   'goofy',
   'gorge',
